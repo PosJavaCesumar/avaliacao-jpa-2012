@@ -23,6 +23,12 @@
                         <name>Insula Maven OSS Releases Repository</name>
                         <url>http://maven-oss.insula.com.br/releases</url>
                 </repository>
+	 <repository>
+	  <url>http://download.java.net/maven/2/</url>
+	  <id>hibernate-persistence</id>
+	  <layout>default</layout>
+	  <name>Repository for library Library[hibernate-persistence]</name>
+	 </repository>
 	</repositories>
 	<properties>
 		<java.version>1.6</java.version>
@@ -86,7 +92,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.6.10.Final</version>
+			<version>3.3.2.GA</version>
 			<exclusions>
 				<exclusion>
 					<groupId>cglib</groupId>
@@ -136,7 +142,7 @@
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
-			<version>1.1</version>
+			<version>1.0.1B</version>
 		</dependency>
 		<!-- QueryDSL -->
 		<dependency>
@@ -169,6 +175,21 @@
 			<version>1.3.164</version>
 			<scope>test</scope>
 		</dependency>
+	 <dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>hibernate</artifactId>
+	  <version>3.2.5.ga</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>ejb3-persistence</artifactId>
+	  <version>1.0.1.GA</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>javax.sql</groupId>
+	  <artifactId>jdbc-stdext</artifactId>
+	  <version>2.0</version>
+	 </dependency>
 	</dependencies>
 	<build>
 		<plugins>
