@@ -19,5 +19,34 @@ public class JpaTest {
 
     @Test
     public void test() {
+        
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        Produto produto = new Produto();
+        produto.setDescricao("NORMAL");
+        em.persist(produto);
+        
+        ProdutoSimples produtoSimples = new ProdutoSimples();
+        produtoSimples.setDescricao("SIMPLES");
+        produtoSimples.setQuantidade(Quantidade.newInstance(10L));
+        em.persist(produtoSimples);
+        
+        ProdutoComposto produtoComposto = new ProdutoComposto();
+        produtoComposto.setDescricao("COMPOSTO");
+        produtoComposto.setQuantidade(Quantidade.newInstance(5L));
+        em.persist(produtoComposto);
+
+        produto.setProdutoComposto(produtoComposto);
+        
+        Pedido pedido = new Pedido();
+        pedido.addProduto(produto);
+        pedido.addProduto(produtoComposto);
+        pedido.addProduto(produtoSimples);
+        em.persist(pedido);
+
+        em.getTransaction().commit();
+        em.close();
+
     }
 }
