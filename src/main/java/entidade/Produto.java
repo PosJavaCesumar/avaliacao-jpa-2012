@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -26,7 +25,6 @@ public class Produto implements Serializable {
     
     @Id
     @GeneratedValue
-    @Column(name="produto_id")
     private Long id;
     
     @Column(length=5)
@@ -38,17 +36,6 @@ public class Produto implements Serializable {
     @Column(nullable=false)
     private Double preco;
     
-    @ManyToOne
-    private ProdutoComposto produtoComposto;
-
-    public ProdutoComposto getProdutoComposto() {
-        return produtoComposto;
-    }
-
-    public void setProdutoComposto(ProdutoComposto produtoComposto) {
-        this.produtoComposto = produtoComposto;
-    }
-
     public String getCodigo() {
         return codigo;
     }
@@ -80,6 +67,12 @@ public class Produto implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" + "id=" + id + ", codigo=" + codigo + ", nome=" + nome + ", preco=" + preco + '}';
+    }
+    
     
     
 }

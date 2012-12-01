@@ -32,6 +32,7 @@ public class Pedido implements Serializable {
     private Integer version;
     
     @Column(name = "data_do_pedido")
+    @Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
     private DateTime data = new DateTime();
     
     @ManyToMany
@@ -54,7 +55,7 @@ public class Pedido implements Serializable {
         this.version = version;
     }
 
-    @Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
+   
     public DateTime getData() {
         return data;
     }
@@ -69,5 +70,26 @@ public class Pedido implements Serializable {
 
     public void setProdutos(Set<Produto> produtos) {
         this.produtos = produtos;
+    }
+    
+    public void showPedido(){
+        System.out.println("Data: "+getData().toString("dd/MM/yyyy"));
+        System.out.println("Pedido n.: "+getId());
+        for (Produto produto : getProdutos()) {
+            System.out.println(produto);
+        }
+            
+                
+    }
+
+    @Override
+    public String toString() {
+        String texto =" Pedido n.: "+getId()+"\n"+
+                "Data: "+getData().toString("dd/MM/yyyy")+"\n";
+        for (Produto produto : getProdutos()) {
+            texto = texto.concat(produto.toString());
+        }
+        texto = texto.concat("\n--- Fim do Pedido ---\n");
+        return texto;
     }
 }

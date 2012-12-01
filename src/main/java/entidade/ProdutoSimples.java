@@ -18,15 +18,10 @@ import javax.persistence.Version;
  */
 @Entity
 @DiscriminatorValue("S")
-public class ProdutoSimples extends Produto implements Serializable {
+public class ProdutoSimples extends Produto {
     
-    @Id
-    @GeneratedValue
-    @Column(name = "produto_simples_id")
-    private Long id;
     
-     @Version
-    private Integer version;
+
      
     @Column(length=255)
     private String descricao;
@@ -40,22 +35,6 @@ public class ProdutoSimples extends Produto implements Serializable {
     }
     
 
-    @Override
-    public Long getId() {
-        return id;
-    }
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-    
+ 
 }
